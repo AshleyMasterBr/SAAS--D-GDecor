@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orçamento Online | Sua Marca</title>
+    <title>Orçamento Online | D&G Decorações</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -14,10 +14,11 @@
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* Cores da Marca */
+        /* Cores da Marca - D&G (Azul Marinho e Dourado) */
         :root {
-            --primary: #FF6B00; 
-            --secondary: #1a1a1a;
+            --primary: #1B3F8B; /* Azul Marinho Clássico */
+            --secondary: #111; /* Preto/Cinza */
+            --gold: #C5A059; /* Dourado Elegante */
             --accent: #25D366; 
             --white: #ffffff;
         }
@@ -29,28 +30,27 @@
         /* Logo */
         .logo { 
             display: flex; align-items: center; gap: 8px;
-            font-size: 1.2rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.5px; text-transform: uppercase; 
+            font-size: 1.2rem; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; text-transform: uppercase; 
         }
         .logo img { height: 35px; width: auto; }
-        .logo span { color: var(--primary); }
+        .logo span { color: var(--gold); }
 
         /* Botão Header */
         .btn-zap-header { 
             background: var(--accent); color: white; padding: 8px 16px; border-radius: 50px; 
             text-decoration: none; font-weight: 600; font-size: 0.9rem; 
             display: flex; align-items: center; gap: 6px; 
-            white-space: nowrap; /* Não quebra linha */
+            white-space: nowrap;
         }
 
         /* --- HERO SECTION --- */
         .hero { 
-            /* Importante: tenha 'fundo.jpg' na pasta */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fundo.jpg'); 
+            background: linear-gradient(rgba(27, 63, 139, 0.8), rgba(27, 63, 139, 0.6)), url('fundo.jpg'); 
             background-size: cover; background-position: center; 
             min-height: 100vh;
             display: flex; align-items: center; justify-content: center;
             text-align: center; color: white;
-            padding: 90px 0 60px 0; /* Padding Top ajustado para não cortar no celular */
+            padding: 90px 0 60px 0;
         }
         .hero-content { max-width: 800px; width: 100%; }
         .hero h1 { font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; }
@@ -61,8 +61,9 @@
             background: white; color: var(--secondary);
             padding: 25px; border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            max-width: 450px; margin: 0 auto;
+            max-width: 500px; margin: 0 auto;
             text-align: left;
+            border-top: 5px solid var(--gold);
         }
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; color: #555; }
@@ -74,7 +75,7 @@
             border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; 
             border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 10px;
         }
-        .btn-calc:hover { background: #e65c00; transform: translateY(-2px); }
+        .btn-calc:hover { background: #143275; transform: translateY(-2px); }
 
         /* --- MODAL (Resultado) --- */
         .modal-overlay {
@@ -87,6 +88,7 @@
             background: white; padding: 25px; border-radius: 15px;
             max-width: 500px; width: 100%; text-align: center;
             position: relative; animation: slideUp 0.4s ease;
+            border-top: 5px solid var(--gold);
         }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
@@ -94,12 +96,15 @@
         
         .price-display { background: #f4f4f4; padding: 15px; border-radius: 10px; margin: 15px 0; }
         .total-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 700; }
-        .total-value { font-size: 2.2rem; font-weight: 900; color: var(--secondary); }
+        .total-value { font-size: 2.2rem; font-weight: 900; color: var(--primary); }
         
-        .bonus-list { text-align: left; margin-bottom: 20px; border: 1px dashed #ccc; padding: 15px; border-radius: 8px; }
+        .payment-options { display: flex; justify-content: space-around; margin-top: 10px; font-size: 0.85rem; gap: 10px; }
+        .pay-item { background: white; padding: 8px; border-radius: 5px; border: 1px solid #ddd; width: 100%; }
+        .pay-val { font-weight: 900; color: var(--gold); display: block; font-size: 1rem; }
+        
+        .bonus-list { text-align: left; margin: 20px 0; border: 1px dashed #ccc; padding: 15px; border-radius: 8px; }
         .bonus-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
-        .bonus-item.free { color: #27ae60; font-weight: 700; }
-        .strike { text-decoration: line-through; color: #e74c3c; margin-right: 5px; font-weight: 400; font-size: 0.8rem; }
+        .bonus-item.free { color: var(--primary); font-weight: 700; }
 
         .btn-action { 
             display: flex; justify-content: center; align-items: center; gap: 8px;
@@ -116,12 +121,12 @@
         .features { padding: 50px 0; text-align: center; background: #fff; }
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
         
-        .feature-item i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .feature-item i { font-size: 2rem; color: var(--gold); margin-bottom: 15px; }
         .feature-item h3 { margin-bottom: 10px; font-size: 1.1rem; min-height: 2.5em; display: flex; align-items: flex-start; justify-content: center; }
         .feature-item p { font-size: 0.9rem; }
 
         /* --- FOOTER --- */
-        footer { background: var(--secondary); color: #777; padding: 20px 0; font-size: 0.8rem; }
+        footer { background: var(--secondary); color: #ccc; padding: 20px 0; font-size: 0.8rem; }
         
         .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         
@@ -132,26 +137,18 @@
         .footer-brand img { height: 25px; width: auto; opacity: 0.8; }
         .footer-text { text-align: right; opacity: 0.8; }
 
-        /* --- MOBILE AJUSTES (Importante para o Mockup) --- */
+        /* --- MOBILE AJUSTES --- */
         @media (max-width: 480px) {
             .container { padding: 0 15px; }
-            
-            /* Logo menor no celular */
             .logo { font-size: 1rem; }
             .logo img { height: 28px; }
-            
-            /* Botão Zap Compacto */
-            .btn-zap-header { 
-                font-size: 0.8rem; 
-                padding: 6px 12px; 
-            }
-            .btn-zap-header span { display: none; } /* Esconde texto longo se tiver */
-            
+            .btn-zap-header { font-size: 0.8rem; padding: 6px 12px; }
+            .btn-zap-header span { display: none; } 
             .hero h1 { font-size: 1.6rem; }
             .total-value { font-size: 1.8rem; }
-            
             .footer-row { flex-direction: column; text-align: center; }
             .footer-text { text-align: center; }
+            .payment-options { flex-direction: column; }
         }
     </style>
 </head>
@@ -161,21 +158,21 @@
         <div class="container flex">
             <div class="logo">
                 <img src="logo.png" alt="Logo" onerror="this.style.display='none'"> 
-                <div>SUA MARCA</div>
+                <div>D&G <span style="color: var(--gold);">DECORAÇÕES</span></div>
             </div>
-            <a href="#" class="btn-zap-header"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://wa.me/55153272229" target="_blank" class="btn-zap-header"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
     </header>
 
     <section class="hero">
         <div class="container hero-content">
-            <h1>Instalação em <br> <span style="color: var(--primary);">SUA REGIÃO</span></h1>
-            <p>Faça seu orçamento em 30s e garanta <strong style="color: #fff;">CONDIÇÕES EXCLUSIVAS</strong>.</p>
+            <h1>Sua casa nova em <br> <span style="color: var(--gold);">ATÉ 12X SEM JUROS</span></h1>
+            <p>Pacotes completos: Piso + Rodapé + Instalação. <strong style="color: #fff;">TUDO INCLUSO.</strong></p>
             
             <div class="calculator-box">
                 <div class="form-group">
                     <label>Qual a metragem aproximada? (m²)</label>
-                    <input type="number" id="metragem" placeholder="Ex: 45">
+                    <input type="number" id="metragem" placeholder="Ex: 50">
                 </div>
                 
                 <div class="form-group">
@@ -191,51 +188,49 @@
                 <div class="form-group">
                     <label>O piso está nivelado?</label>
                     <select id="nivelamento">
-                        <option value="Nao sei">Não sei dizer</option>
                         <option value="Sim">Sim, está reto</option>
                         <option value="Não">Não, está irregular</option>
+                        <option value="Nao sei">Não sei dizer</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label>Modelo preferido?</label>
                     <select id="modelo">
-                        <option value="120">Laminado Padrão (R$ 120/m²)</option>
-                        <option value="160">Vinílico Colado (R$ 160/m²)</option>
-                        <option value="210">Vinílico Clicado (R$ 210/m²)</option>
-                        <option value="350">Madeira Maciça (R$ 350/m²)</option>
+                        <option value="120.00">Laminado Eucafloor (R$ 120,00/m²)</option>
+                        <option value="220.00">Vinílico Clicado (R$ 220,00/m²)</option>
                     </select>
                 </div>
 
                 <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top: 5px;">
-                    <input type="checkbox" id="rodape" style="width:20px;">
-                    <label for="rodape" style="margin:0;">Incluir Rodapé (+ R$ 25/m)</label>
+                    <input type="checkbox" id="rodape" checked disabled style="width:20px;">
+                    <label for="rodape" style="margin:0; font-weight: 700; color: var(--primary);">Inclui Rodapé, Perfil e Instalação</label>
                 </div>
 
-                <button class="btn-calc" onclick="calcular()">VER PREÇO ESTIMADO</button>
+                <button class="btn-calc" onclick="calcular()">VER ORÇAMENTO E PARCELAS</button>
             </div>
         </div>
     </section>
 
     <section class="features">
         <div class="container">
-            <h2>Por que escolher a SUA MARCA?</h2>
+            <h2>Por que escolher a <span style="color:var(--primary)">D&G</span>?</h2>
             
             <div class="feature-grid">
                 <div class="feature-item">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Instalação Rápida</h3>
-                    <p>Equipe rápida e limpa. Entregamos sua obra sem dor de cabeça.</p>
+                    <i class="fas fa-credit-card"></i>
+                    <h3>12x Sem Juros</h3>
+                    <p>Facilidade total para realizar o sonho da casa nova sem pesar no bolso.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-medal"></i>
-                    <h3>Garantia Total</h3>
-                    <p>Segurança na instalação e nos materiais utilizados.</p>
+                    <i class="fas fa-tools"></i>
+                    <h3>Pacote Completo</h3>
+                    <p>O valor já inclui rodapés (MDF ou Poliestireno), perfis de acabamento e mão de obra.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-comments-dollar"></i>
-                    <h3>Negociação Direta</h3>
-                    <p>Fale diretamente com quem resolve e pague facilitado.</p>
+                    <i class="fas fa-percentage"></i>
+                    <h3>Desconto à Vista</h3>
+                    <p>Ganhe 10% de desconto fechando o pagamento no PIX ou dinheiro.</p>
                 </div>
             </div>
         </div>
@@ -245,7 +240,7 @@
         <div class="container footer-row">
             <div class="footer-brand">
                 <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
-                <div>SUA MARCA</div>
+                <div>D&G <span style="color: var(--gold);">DECORAÇÕES</span></div>
             </div>
             <div class="footer-text">
                 &copy; Todos os direitos reservados. <span style="margin: 0 5px; opacity: 0.3;">|</span> Desenvolvido por Legado Performance
@@ -260,23 +255,34 @@
             <h3>Orçamento Estimado</h3>
             
             <div class="price-display">
-                <div class="total-label">Investimento Aproximado</div>
+                <div class="total-label">Valor Total (Cartão 12x)</div>
                 <div class="total-value" id="valorFinal">R$ 0,00</div>
+                
+                <div class="payment-options">
+                    <div class="pay-item">
+                        <span>12x Sem Juros</span>
+                        <span class="pay-val" id="valParcela">R$ 000</span>
+                    </div>
+                    <div class="pay-item">
+                        <span>À Vista (-10%)</span>
+                        <span class="pay-val" id="valVista" style="color:green">R$ 000</span>
+                    </div>
+                </div>
             </div>
 
             <div class="bonus-list">
-                <p style="margin-bottom:10px; font-weight:600;">Condições Exclusivas Hoje:</p>
+                <p style="margin-bottom:10px; font-weight:600;">Itens Inclusos no Pacote:</p>
                 <div class="bonus-item free">
-                    <span><i class="fas fa-check"></i> Cola Especial</span>
-                    <span><span class="strike">R$ 300</span> GRÁTIS</span>
+                    <span id="txtRodape"><i class="fas fa-check"></i> Rodapé MDF 7cm</span>
+                    <span>INCLUSO</span>
                 </div>
                 <div class="bonus-item free">
-                    <span><i class="fas fa-check"></i> Manta Acústica</span>
-                    <span><span class="strike">R$ 150</span> GRÁTIS</span>
+                    <span><i class="fas fa-check"></i> Perfil de Acabamento</span>
+                    <span>INCLUSO</span>
                 </div>
-                <div class="bonus-item">
-                    <span><i class="fas fa-check"></i> Mão de Obra</span>
-                    <span>Incluso</span>
+                <div class="bonus-item free">
+                    <span><i class="fas fa-check"></i> Instalação Completa</span>
+                    <span>INCLUSO</span>
                 </div>
             </div>
 
@@ -285,7 +291,7 @@
             </a>
             
             <p class="disclaimer">
-                *Valor estimado. Visita técnica necessária para validar.
+                *Valores estimados. Necessária visita técnica para confirmação.
             </p>
         </div>
     </div>
@@ -296,7 +302,6 @@
             const modeloEl = document.getElementById('modelo');
             const modeloPreco = parseFloat(modeloEl.value);
             const modeloNome = modeloEl.options[modeloEl.selectedIndex].text;
-            const temRodape = document.getElementById('rodape').checked;
             
             const pisoAtual = document.getElementById('pisoAtual').value;
             const nivelamento = document.getElementById('nivelamento').value;
@@ -306,24 +311,35 @@
                 return;
             }
 
-            let total = metragem * modeloPreco;
-            if (temRodape) {
-                total += (metragem * 25); 
-            }
+            // Cálculo Total
+            const total = metragem * modeloPreco;
+            const parcela = total / 12;
+            const vista = total * 0.90; // 10% de desconto
 
-            const valorFormatado = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            document.getElementById('valorFinal').innerText = valorFormatado;
+            // Atualiza Texto do Rodapé conforme modelo
+            let descRodape = "Rodapé MDF 7cm";
+            if (modeloNome.includes("Vinílico")) {
+                descRodape = "Rodapé Poliestireno 10cm";
+            }
+            document.getElementById('txtRodape').innerHTML = `<i class="fas fa-check"></i> ${descRodape}`;
+
+            // Formatação
+            document.getElementById('valorFinal').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('valParcela').innerText = parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('valVista').innerText = vista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             
-            const textoZap = `Olá! Simulação do site:\n\n` +
+            const textoZap = `Olá, D&G Decorações! Simulação do site:\n\n` +
                              `📐 *Metragem:* ${metragem}m²\n` +
                              `🪵 *Modelo:* ${modeloNome.split('(')[0]}\n` +
-                             `💰 *Valor Estimado:* ${valorFormatado}\n\n` +
+                             `✅ *Pacote:* ${descRodape} + Perfil + Instalação\n` +
+                             `💳 *Opção Parcelada:* 12x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n` +
+                             `💵 *Opção à Vista:* ${vista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n\n` +
                              `ℹ️ *Local:*\n` +
                              `- Atual: ${pisoAtual}\n` +
                              `- Nivelamento: ${nivelamento}\n\n` +
-                             `Quero agendar visita.`;
+                             `Gostaria de agendar visita.`;
             
-            const numeroZap = "5511913393797"; 
+            const numeroZap = "55153272229"; 
             const link = `https://wa.me/${numeroZap}?text=${encodeURIComponent(textoZap)}`;
             document.getElementById('linkZap').href = link;
             document.getElementById('modalResult').style.display = 'flex';
@@ -342,4 +358,3 @@
     </script>
 </body>
 </html>
-
