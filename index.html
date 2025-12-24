@@ -4,151 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento Online | D&G Decorações</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- RESET & BASE --- */
+        /* --- ESTILO MINIMALISTA LUXURY --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        body { font-family: 'Lato', sans-serif; color: #111; line-height: 1.6; background-color: #fff; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* Cores da Marca - D&G (Azul Marinho e Dourado) */
+        /* Paleta D&G Revisada */
         :root {
-            --primary: #1B3F8B; /* Azul Marinho Clássico */
-            --secondary: #111; /* Preto/Cinza */
-            --gold: #C5A059; /* Dourado Elegante */
-            --accent: #25D366; 
+            --primary: #000000; /* Preto Absoluto (Luxo) */
+            --secondary: #333333; /* Cinza Chumbo */
+            --bronze: #b08d55; /* Bronze Sofisticado (A Surpresa) */
+            --bg-light: #f9f9f9; /* Off-white para seções */
+            --accent: #25D366; /* WhatsApp */
             --white: #ffffff;
         }
 
         /* --- HEADER --- */
-        header { background: var(--white); padding: 12px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        header { background: rgba(255,255,255,0.95); padding: 15px 0; border-bottom: 1px solid #eaeaea; position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(5px); }
         header .flex { display: flex; justify-content: space-between; align-items: center; }
         
-        /* Logo */
+        /* Logo (Preto no Branco) */
         .logo { 
-            display: flex; align-items: center; gap: 8px;
-            font-size: 1.2rem; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; text-transform: uppercase; 
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.1rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;
         }
-        .logo img { height: 35px; width: auto; }
-        .logo span { color: var(--gold); }
-
-        /* Botão Header */
+        .logo img { height: 32px; width: auto; } /* Ajuste de altura */
+        
+        /* Botão Header Minimalista */
         .btn-zap-header { 
-            background: var(--accent); color: white; padding: 8px 16px; border-radius: 50px; 
-            text-decoration: none; font-weight: 600; font-size: 0.9rem; 
-            display: flex; align-items: center; gap: 6px; 
-            white-space: nowrap;
+            background: var(--primary); color: white; padding: 8px 20px; border-radius: 4px; 
+            text-decoration: none; font-weight: 400; font-size: 0.85rem; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 8px; transition: 0.3s;
         }
+        .btn-zap-header:hover { background: var(--bronze); }
 
         /* --- HERO SECTION --- */
         .hero { 
-            background: linear-gradient(rgba(27, 63, 139, 0.8), rgba(27, 63, 139, 0.6)), url('fundo.jpg'); 
+            /* Fundo escuro para contraste com o texto branco, mas a caixa será branca */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fundo.jpg'); 
             background-size: cover; background-position: center; 
             min-height: 100vh;
             display: flex; align-items: center; justify-content: center;
             text-align: center; color: white;
-            padding: 90px 0 60px 0;
+            padding: 100px 0 60px 0;
         }
-        .hero-content { max-width: 800px; width: 100%; }
-        .hero h1 { font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; }
-        .hero p { font-size: 1rem; margin-bottom: 25px; opacity: 0.9; }
+        .hero-content { max-width: 900px; width: 100%; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 15px; text-transform: uppercase; font-weight: 300; }
+        .hero h1 strong { font-weight: 700; color: #fff; border-bottom: 2px solid var(--bronze); }
+        .hero p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; font-weight: 300; }
 
-        /* --- CALCULADORA --- */
+        /* --- CALCULADORA (Clean) --- */
         .calculator-box {
             background: white; color: var(--secondary);
-            padding: 25px; border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            padding: 30px; border-radius: 4px; /* Cantos mais retos = mais moderno */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
             max-width: 500px; margin: 0 auto;
             text-align: left;
-            border-top: 5px solid var(--gold);
+            border: 1px solid #eee;
         }
-        .form-group { margin-bottom: 12px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; color: #555; }
-        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95rem; outline: none; transition: 0.3s; background: #f9f9f9; }
-        .form-group input:focus, .form-group select:focus { border-color: var(--primary); background: #fff; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 0.8rem; color: #000; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 2px; font-size: 0.95rem; outline: none; transition: 0.3s; background: #fff; color: #333; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
         
         .btn-calc { 
             width: 100%; background: var(--primary); color: white; 
-            border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; 
-            border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 10px;
+            border: none; padding: 16px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+            border-radius: 2px; cursor: pointer; transition: 0.3s; margin-top: 10px;
         }
-        .btn-calc:hover { background: #143275; transform: translateY(-2px); }
+        .btn-calc:hover { background: var(--bronze); }
 
         /* --- MODAL (Resultado) --- */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); z-index: 2000;
+            background: rgba(0,0,0,0.9); z-index: 2000;
             display: none; justify-content: center; align-items: center;
             padding: 20px;
         }
         .modal-content {
-            background: white; padding: 25px; border-radius: 15px;
+            background: white; padding: 30px; border-radius: 4px;
             max-width: 500px; width: 100%; text-align: center;
             position: relative; animation: slideUp 0.4s ease;
-            border-top: 5px solid var(--gold);
         }
         @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #ccc; transition:0.3s;}
+        .close-modal:hover { color: #000; }
         
-        .price-display { background: #f4f4f4; padding: 15px; border-radius: 10px; margin: 15px 0; }
-        .total-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 700; }
-        .total-value { font-size: 2.2rem; font-weight: 900; color: var(--primary); }
+        .price-display { background: var(--bg-light); padding: 20px; border-radius: 4px; margin: 20px 0; border: 1px solid #eee; }
+        .total-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 700; }
+        .total-value { font-size: 2.5rem; font-weight: 300; color: var(--primary); margin: 5px 0; }
         
-        .payment-options { display: flex; justify-content: space-around; margin-top: 10px; font-size: 0.85rem; gap: 10px; }
-        .pay-item { background: white; padding: 8px; border-radius: 5px; border: 1px solid #ddd; width: 100%; }
-        .pay-val { font-weight: 900; color: var(--gold); display: block; font-size: 1rem; }
+        .payment-options { display: flex; justify-content: space-between; margin-top: 15px; gap: 10px; text-align: left; }
+        .pay-item { flex: 1; }
+        .pay-label { font-size: 0.7rem; text-transform: uppercase; color: #999; display: block; margin-bottom: 2px; }
+        .pay-val { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+        .pay-val.discount { color: var(--bronze); } /* Destaque sutil */
         
-        .bonus-list { text-align: left; margin: 20px 0; border: 1px dashed #ccc; padding: 15px; border-radius: 8px; }
-        .bonus-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
-        .bonus-item.free { color: var(--primary); font-weight: 700; }
+        .bonus-list { text-align: left; margin: 20px 0; padding: 15px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .bonus-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; align-items: center; }
+        .bonus-item i { color: var(--bronze); margin-right: 8px; }
+        .bonus-item.free span:last-child { background: #000; color: #fff; padding: 2px 8px; border-radius: 2px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; }
 
         .btn-action { 
-            display: flex; justify-content: center; align-items: center; gap: 8px;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
             width: 100%; background: var(--accent); color: white; 
-            padding: 15px; text-decoration: none; font-weight: 700; border-radius: 8px; 
-            font-size: 1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            animation: pulse 2s infinite;
+            padding: 16px; text-decoration: none; font-weight: 700; border-radius: 4px; 
+            font-size: 1rem; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            transition: 0.3s; text-transform: uppercase;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .btn-action:hover { background: #1ebc57; transform: translateY(-2px); }
         
-        .disclaimer { margin-top: 15px; font-size: 0.7rem; color: #777; }
+        .disclaimer { margin-top: 20px; font-size: 0.7rem; color: #999; }
 
-        /* --- DIFERENCIAIS --- */
-        .features { padding: 50px 0; text-align: center; background: #fff; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
+        /* --- DIFERENCIAIS (Clean) --- */
+        .features { padding: 80px 0; text-align: center; background: #fff; }
+        .features h2 { margin-bottom: 50px; font-size: 1.8rem; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         
-        .feature-item i { font-size: 2rem; color: var(--gold); margin-bottom: 15px; }
-        .feature-item h3 { margin-bottom: 10px; font-size: 1.1rem; min-height: 2.5em; display: flex; align-items: flex-start; justify-content: center; }
-        .feature-item p { font-size: 0.9rem; }
+        .feature-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .feature-item h3 { margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .feature-item p { font-size: 0.9rem; color: #666; font-weight: 300; }
 
-        /* --- FOOTER --- */
-        footer { background: var(--secondary); color: #ccc; padding: 20px 0; font-size: 0.8rem; }
+        /* --- FOOTER (Light) --- */
+        /* Mudança Crítica: Fundo Claro para o Logo Preto aparecer */
+        footer { background: var(--bg-light); color: var(--primary); padding: 40px 0; border-top: 1px solid #eee; font-size: 0.85rem; }
         
-        .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
         
         .footer-brand { 
-            display: flex; align-items: center; gap: 8px;
-            color: white; font-weight: 700; text-transform: uppercase; 
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
         }
-        .footer-brand img { height: 25px; width: auto; opacity: 0.8; }
-        .footer-text { text-align: right; opacity: 0.8; }
+        .footer-brand img { height: 30px; width: auto; } /* Logo Preto original vai funcionar aqui */
+        .footer-text { text-align: right; color: #999; }
 
         /* --- MOBILE AJUSTES --- */
         @media (max-width: 480px) {
             .container { padding: 0 15px; }
-            .logo { font-size: 1rem; }
-            .logo img { height: 28px; }
-            .btn-zap-header { font-size: 0.8rem; padding: 6px 12px; }
-            .btn-zap-header span { display: none; } 
-            .hero h1 { font-size: 1.6rem; }
-            .total-value { font-size: 1.8rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .total-value { font-size: 2rem; }
             .footer-row { flex-direction: column; text-align: center; }
             .footer-text { text-align: center; }
-            .payment-options { flex-direction: column; }
+            .payment-options { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
@@ -157,8 +160,8 @@
     <header>
         <div class="container flex">
             <div class="logo">
-                <img src="logo.png" alt="Logo" onerror="this.style.display='none'"> 
-                <div>D&G <span style="color: var(--gold);">DECORAÇÕES</span></div>
+                <img src="logo.png" alt="D&G Decorações" onerror="this.style.display='none'"> 
+                <div>D&G Decorações</div>
             </div>
             <a href="https://wa.me/55153272229" target="_blank" class="btn-zap-header"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </div>
@@ -166,17 +169,17 @@
 
     <section class="hero">
         <div class="container hero-content">
-            <h1>Sua casa nova em <br> <span style="color: var(--gold);">ATÉ 12X SEM JUROS</span></h1>
-            <p>Pacotes completos: Piso + Rodapé + Instalação. <strong style="color: #fff;">TUDO INCLUSO.</strong></p>
+            <h1>Sua casa nova <br> <strong>SEM JUROS</strong></h1>
+            <p>Pacotes completos com Piso, Rodapé e Instalação em até 12x.</p>
             
             <div class="calculator-box">
                 <div class="form-group">
-                    <label>Qual a metragem aproximada? (m²)</label>
+                    <label>Metragem Aproximada (m²)</label>
                     <input type="number" id="metragem" placeholder="Ex: 50">
                 </div>
                 
                 <div class="form-group">
-                    <label>Piso atual do local?</label>
+                    <label>Situação do Piso Atual</label>
                     <select id="pisoAtual">
                         <option value="Contrapiso">Contrapiso (Cimento)</option>
                         <option value="Cerâmica">Cerâmica / Porcelanato</option>
@@ -186,51 +189,51 @@
                 </div>
 
                 <div class="form-group">
-                    <label>O piso está nivelado?</label>
+                    <label>Nivelamento</label>
                     <select id="nivelamento">
-                        <option value="Sim">Sim, está reto</option>
-                        <option value="Não">Não, está irregular</option>
-                        <option value="Nao sei">Não sei dizer</option>
+                        <option value="Sim">Sim, está nivelado</option>
+                        <option value="Não">Não, precisa regularizar</option>
+                        <option value="Nao sei">Não sei avaliar</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Modelo preferido?</label>
+                    <label>Escolha o Modelo</label>
                     <select id="modelo">
                         <option value="120.00">Laminado Eucafloor (R$ 120,00/m²)</option>
                         <option value="220.00">Vinílico Clicado (R$ 220,00/m²)</option>
                     </select>
                 </div>
 
-                <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top: 5px;">
-                    <input type="checkbox" id="rodape" checked disabled style="width:20px;">
-                    <label for="rodape" style="margin:0; font-weight: 700; color: var(--primary);">Inclui Rodapé, Perfil e Instalação</label>
+                <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top: 15px; padding: 10px; background: #f9f9f9; border-radius: 4px;">
+                    <input type="checkbox" id="rodape" checked disabled style="width:18px; height: 18px; accent-color: var(--primary);">
+                    <label for="rodape" style="margin:0; font-size: 0.75rem; color: #555;">Inclui Rodapé, Perfil e Instalação</label>
                 </div>
 
-                <button class="btn-calc" onclick="calcular()">VER ORÇAMENTO E PARCELAS</button>
+                <button class="btn-calc" onclick="calcular()">CALCULAR PARCELAS</button>
             </div>
         </div>
     </section>
 
     <section class="features">
         <div class="container">
-            <h2>Por que escolher a <span style="color:var(--primary)">D&G</span>?</h2>
+            <h2>Diferenciais D&G</h2>
             
             <div class="feature-grid">
                 <div class="feature-item">
-                    <i class="fas fa-credit-card"></i>
+                    <i class="far fa-credit-card"></i>
                     <h3>12x Sem Juros</h3>
-                    <p>Facilidade total para realizar o sonho da casa nova sem pesar no bolso.</p>
+                    <p>Realize seu sonho com parcelas fixas que cabem no bolso.</p>
                 </div>
                 <div class="feature-item">
-                    <i class="fas fa-tools"></i>
+                    <i class="fas fa-toolbox"></i>
                     <h3>Pacote Completo</h3>
-                    <p>O valor já inclui rodapés (MDF ou Poliestireno), perfis de acabamento e mão de obra.</p>
+                    <p>Instalação, acabamentos e rodapés inclusos no valor do metro.</p>
                 </div>
                 <div class="feature-item">
                     <i class="fas fa-percentage"></i>
                     <h3>Desconto à Vista</h3>
-                    <p>Ganhe 10% de desconto fechando o pagamento no PIX ou dinheiro.</p>
+                    <p>Ganhe 10% de desconto no pagamento em dinheiro ou PIX.</p>
                 </div>
             </div>
         </div>
@@ -239,11 +242,11 @@
     <footer>
         <div class="container footer-row">
             <div class="footer-brand">
-                <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
-                <div>D&G <span style="color: var(--gold);">DECORAÇÕES</span></div>
+                <img src="logo.png" alt="D&G" onerror="this.style.display='none'">
+                <div>D&G Decorações</div>
             </div>
             <div class="footer-text">
-                &copy; Todos os direitos reservados. <span style="margin: 0 5px; opacity: 0.3;">|</span> Desenvolvido por Legado Performance
+                &copy; Todos os direitos reservados.
             </div>
         </div>
     </footer>
@@ -252,26 +255,25 @@
         <div class="modal-content">
             <span class="close-modal" onclick="fecharModal()">&times;</span>
             
-            <h3>Orçamento Estimado</h3>
+            <h3>Seu Orçamento</h3>
             
             <div class="price-display">
-                <div class="total-label">Valor Total (Cartão 12x)</div>
+                <div class="total-label">Valor Total Estimado</div>
                 <div class="total-value" id="valorFinal">R$ 0,00</div>
                 
                 <div class="payment-options">
                     <div class="pay-item">
-                        <span>12x Sem Juros</span>
+                        <span class="pay-label">12x Sem Juros</span>
                         <span class="pay-val" id="valParcela">R$ 000</span>
                     </div>
-                    <div class="pay-item">
-                        <span>À Vista (-10%)</span>
-                        <span class="pay-val" id="valVista" style="color:green">R$ 000</span>
+                    <div class="pay-item" style="text-align: right;">
+                        <span class="pay-label">À Vista (-10%)</span>
+                        <span class="pay-val discount" id="valVista">R$ 000</span>
                     </div>
                 </div>
             </div>
 
             <div class="bonus-list">
-                <p style="margin-bottom:10px; font-weight:600;">Itens Inclusos no Pacote:</p>
                 <div class="bonus-item free">
                     <span id="txtRodape"><i class="fas fa-check"></i> Rodapé MDF 7cm</span>
                     <span>INCLUSO</span>
@@ -281,7 +283,7 @@
                     <span>INCLUSO</span>
                 </div>
                 <div class="bonus-item free">
-                    <span><i class="fas fa-check"></i> Instalação Completa</span>
+                    <span><i class="fas fa-check"></i> Instalação Profissional</span>
                     <span>INCLUSO</span>
                 </div>
             </div>
@@ -291,7 +293,7 @@
             </a>
             
             <p class="disclaimer">
-                *Valores estimados. Necessária visita técnica para confirmação.
+                *O valor final pode sofrer ajustes após visita técnica para medição exata.
             </p>
         </div>
     </div>
@@ -311,33 +313,30 @@
                 return;
             }
 
-            // Cálculo Total
+            // Cálculo
             const total = metragem * modeloPreco;
             const parcela = total / 12;
-            const vista = total * 0.90; // 10% de desconto
+            const vista = total * 0.90;
 
-            // Atualiza Texto do Rodapé conforme modelo
+            // Texto dinâmico do rodapé
             let descRodape = "Rodapé MDF 7cm";
             if (modeloNome.includes("Vinílico")) {
                 descRodape = "Rodapé Poliestireno 10cm";
             }
             document.getElementById('txtRodape').innerHTML = `<i class="fas fa-check"></i> ${descRodape}`;
 
-            // Formatação
             document.getElementById('valorFinal').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             document.getElementById('valParcela').innerText = parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             document.getElementById('valVista').innerText = vista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             
-            const textoZap = `Olá, D&G Decorações! Simulação do site:\n\n` +
+            const textoZap = `Olá, D&G! Simulação do site:\n\n` +
                              `📐 *Metragem:* ${metragem}m²\n` +
                              `🪵 *Modelo:* ${modeloNome.split('(')[0]}\n` +
-                             `✅ *Pacote:* ${descRodape} + Perfil + Instalação\n` +
-                             `💳 *Opção Parcelada:* 12x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n` +
-                             `💵 *Opção à Vista:* ${vista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n\n` +
-                             `ℹ️ *Local:*\n` +
-                             `- Atual: ${pisoAtual}\n` +
-                             `- Nivelamento: ${nivelamento}\n\n` +
-                             `Gostaria de agendar visita.`;
+                             `✅ *Incluso:* ${descRodape}, Perfil e Instalação\n` +
+                             `💳 *12x de:* ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n` +
+                             `💵 *À Vista:* ${vista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}\n\n` +
+                             `ℹ️ *Info:* Atual: ${pisoAtual} | Nivelamento: ${nivelamento}\n\n` +
+                             `Quero agendar visita.`;
             
             const numeroZap = "55153272229"; 
             const link = `https://wa.me/${numeroZap}?text=${encodeURIComponent(textoZap)}`;
