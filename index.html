@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Online | Sua Marca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Cores da Marca */
+        :root {
+            --primary: #FF6B00; 
+            --secondary: #1a1a1a;
+            --accent: #25D366; 
+            --white: #ffffff;
+        }
+
+        /* --- HEADER --- */
+        header { background: var(--white); padding: 12px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        header .flex { display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Logo */
+        .logo { 
+            display: flex; align-items: center; gap: 8px;
+            font-size: 1.2rem; font-weight: 900; color: var(--secondary); letter-spacing: -0.5px; text-transform: uppercase; 
+        }
+        .logo img { height: 35px; width: auto; }
+        .logo span { color: var(--primary); }
+
+        /* Botão Header */
+        .btn-zap-header { 
+            background: var(--accent); color: white; padding: 8px 16px; border-radius: 50px; 
+            text-decoration: none; font-weight: 600; font-size: 0.9rem; 
+            display: flex; align-items: center; gap: 6px; 
+            white-space: nowrap; /* Não quebra linha */
+        }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            /* Importante: tenha 'fundo.jpg' na pasta */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('fundo.jpg'); 
+            background-size: cover; background-position: center; 
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; color: white;
+            padding: 90px 0 60px 0; /* Padding Top ajustado para não cortar no celular */
+        }
+        .hero-content { max-width: 800px; width: 100%; }
+        .hero h1 { font-size: 2rem; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; }
+        .hero p { font-size: 1rem; margin-bottom: 25px; opacity: 0.9; }
+
+        /* --- CALCULADORA --- */
+        .calculator-box {
+            background: white; color: var(--secondary);
+            padding: 25px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            max-width: 450px; margin: 0 auto;
+            text-align: left;
+        }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; color: #555; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.95rem; outline: none; transition: 0.3s; background: #f9f9f9; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary); background: #fff; }
+        
+        .btn-calc { 
+            width: 100%; background: var(--primary); color: white; 
+            border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; 
+            border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 10px;
+        }
+        .btn-calc:hover { background: #e65c00; transform: translateY(-2px); }
+
+        /* --- MODAL (Resultado) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); z-index: 2000;
+            display: none; justify-content: center; align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white; padding: 25px; border-radius: 15px;
+            max-width: 500px; width: 100%; text-align: center;
+            position: relative; animation: slideUp 0.4s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; }
+        
+        .price-display { background: #f4f4f4; padding: 15px; border-radius: 10px; margin: 15px 0; }
+        .total-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #666; font-weight: 700; }
+        .total-value { font-size: 2.2rem; font-weight: 900; color: var(--secondary); }
+        
+        .bonus-list { text-align: left; margin-bottom: 20px; border: 1px dashed #ccc; padding: 15px; border-radius: 8px; }
+        .bonus-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
+        .bonus-item.free { color: #27ae60; font-weight: 700; }
+        .strike { text-decoration: line-through; color: #e74c3c; margin-right: 5px; font-weight: 400; font-size: 0.8rem; }
+
+        .btn-action { 
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            width: 100%; background: var(--accent); color: white; 
+            padding: 15px; text-decoration: none; font-weight: 700; border-radius: 8px; 
+            font-size: 1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        
+        .disclaimer { margin-top: 15px; font-size: 0.7rem; color: #777; }
+
+        /* --- DIFERENCIAIS --- */
+        .features { padding: 50px 0; text-align: center; background: #fff; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
+        
+        .feature-item i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .feature-item h3 { margin-bottom: 10px; font-size: 1.1rem; min-height: 2.5em; display: flex; align-items: flex-start; justify-content: center; }
+        .feature-item p { font-size: 0.9rem; }
+
+        /* --- FOOTER --- */
+        footer { background: var(--secondary); color: #777; padding: 20px 0; font-size: 0.8rem; }
+        
+        .footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        
+        .footer-brand { 
+            display: flex; align-items: center; gap: 8px;
+            color: white; font-weight: 700; text-transform: uppercase; 
+        }
+        .footer-brand img { height: 25px; width: auto; opacity: 0.8; }
+        .footer-text { text-align: right; opacity: 0.8; }
+
+        /* --- MOBILE AJUSTES (Importante para o Mockup) --- */
+        @media (max-width: 480px) {
+            .container { padding: 0 15px; }
+            
+            /* Logo menor no celular */
+            .logo { font-size: 1rem; }
+            .logo img { height: 28px; }
+            
+            /* Botão Zap Compacto */
+            .btn-zap-header { 
+                font-size: 0.8rem; 
+                padding: 6px 12px; 
+            }
+            .btn-zap-header span { display: none; } /* Esconde texto longo se tiver */
+            
+            .hero h1 { font-size: 1.6rem; }
+            .total-value { font-size: 1.8rem; }
+            
+            .footer-row { flex-direction: column; text-align: center; }
+            .footer-text { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container flex">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" onerror="this.style.display='none'"> 
+                <div>SUA MARCA</div>
+            </div>
+            <a href="#" class="btn-zap-header"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Instalação em <br> <span style="color: var(--primary);">SUA REGIÃO</span></h1>
+            <p>Faça seu orçamento em 30s e garanta <strong style="color: #fff;">CONDIÇÕES EXCLUSIVAS</strong>.</p>
+            
+            <div class="calculator-box">
+                <div class="form-group">
+                    <label>Qual a metragem aproximada? (m²)</label>
+                    <input type="number" id="metragem" placeholder="Ex: 45">
+                </div>
+                
+                <div class="form-group">
+                    <label>Piso atual do local?</label>
+                    <select id="pisoAtual">
+                        <option value="Contrapiso">Contrapiso (Cimento)</option>
+                        <option value="Cerâmica">Cerâmica / Porcelanato</option>
+                        <option value="Madeira">Madeira / Taco</option>
+                        <option value="Outro">Outro / Não sei</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>O piso está nivelado?</label>
+                    <select id="nivelamento">
+                        <option value="Nao sei">Não sei dizer</option>
+                        <option value="Sim">Sim, está reto</option>
+                        <option value="Não">Não, está irregular</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Modelo preferido?</label>
+                    <select id="modelo">
+                        <option value="120">Laminado Padrão (R$ 120/m²)</option>
+                        <option value="160">Vinílico Colado (R$ 160/m²)</option>
+                        <option value="210">Vinílico Clicado (R$ 210/m²)</option>
+                        <option value="350">Madeira Maciça (R$ 350/m²)</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top: 5px;">
+                    <input type="checkbox" id="rodape" style="width:20px;">
+                    <label for="rodape" style="margin:0;">Incluir Rodapé (+ R$ 25/m)</label>
+                </div>
+
+                <button class="btn-calc" onclick="calcular()">VER PREÇO ESTIMADO</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Por que escolher a SUA MARCA?</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Instalação Rápida</h3>
+                    <p>Equipe rápida e limpa. Entregamos sua obra sem dor de cabeça.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-medal"></i>
+                    <h3>Garantia Total</h3>
+                    <p>Segurança na instalação e nos materiais utilizados.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-comments-dollar"></i>
+                    <h3>Negociação Direta</h3>
+                    <p>Fale diretamente com quem resolve e pague facilitado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-row">
+            <div class="footer-brand">
+                <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
+                <div>SUA MARCA</div>
+            </div>
+            <div class="footer-text">
+                &copy; Todos os direitos reservados. <span style="margin: 0 5px; opacity: 0.3;">|</span> Desenvolvido por Legado Performance
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modalResult">
+        <div class="modal-content">
+            <span class="close-modal" onclick="fecharModal()">&times;</span>
+            
+            <h3>Orçamento Estimado</h3>
+            
+            <div class="price-display">
+                <div class="total-label">Investimento Aproximado</div>
+                <div class="total-value" id="valorFinal">R$ 0,00</div>
+            </div>
+
+            <div class="bonus-list">
+                <p style="margin-bottom:10px; font-weight:600;">Condições Exclusivas Hoje:</p>
+                <div class="bonus-item free">
+                    <span><i class="fas fa-check"></i> Cola Especial</span>
+                    <span><span class="strike">R$ 300</span> GRÁTIS</span>
+                </div>
+                <div class="bonus-item free">
+                    <span><i class="fas fa-check"></i> Manta Acústica</span>
+                    <span><span class="strike">R$ 150</span> GRÁTIS</span>
+                </div>
+                <div class="bonus-item">
+                    <span><i class="fas fa-check"></i> Mão de Obra</span>
+                    <span>Incluso</span>
+                </div>
+            </div>
+
+            <a href="#" id="linkZap" class="btn-action" target="_parent">
+                AGENDAR VISITA <i class="fab fa-whatsapp"></i>
+            </a>
+            
+            <p class="disclaimer">
+                *Valor estimado. Visita técnica necessária para validar.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            const metragem = parseFloat(document.getElementById('metragem').value);
+            const modeloEl = document.getElementById('modelo');
+            const modeloPreco = parseFloat(modeloEl.value);
+            const modeloNome = modeloEl.options[modeloEl.selectedIndex].text;
+            const temRodape = document.getElementById('rodape').checked;
+            
+            const pisoAtual = document.getElementById('pisoAtual').value;
+            const nivelamento = document.getElementById('nivelamento').value;
+
+            if (isNaN(metragem) || metragem < 1) {
+                alert("Por favor, digite uma metragem válida.");
+                return;
+            }
+
+            let total = metragem * modeloPreco;
+            if (temRodape) {
+                total += (metragem * 25); 
+            }
+
+            const valorFormatado = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('valorFinal').innerText = valorFormatado;
+            
+            const textoZap = `Olá! Simulação do site:\n\n` +
+                             `📐 *Metragem:* ${metragem}m²\n` +
+                             `🪵 *Modelo:* ${modeloNome.split('(')[0]}\n` +
+                             `💰 *Valor Estimado:* ${valorFormatado}\n\n` +
+                             `ℹ️ *Local:*\n` +
+                             `- Atual: ${pisoAtual}\n` +
+                             `- Nivelamento: ${nivelamento}\n\n` +
+                             `Quero agendar visita.`;
+            
+            const numeroZap = "5511913393797"; 
+            const link = `https://wa.me/${numeroZap}?text=${encodeURIComponent(textoZap)}`;
+            document.getElementById('linkZap').href = link;
+            document.getElementById('modalResult').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('modalResult').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalResult');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+

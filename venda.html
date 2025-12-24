@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Studio | Automação para Lojas de Pisos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- ESTILO DARK PREMIUM --- */
+        :root {
+            --bg: #0f172a; /* Azul Noturno */
+            --card: #1e293b;
+            --primary: #3b82f6; /* Azul Tech */
+            --accent: #25D366; /* Verde Zap */
+            --text: #f8fafc;
+            --gray: #94a3b8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        
+        /* HEADER */
+        header { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo { font-weight: 900; font-size: 1.2rem; letter-spacing: -1px; }
+        .logo span { color: var(--primary); }
+
+        /* HERO SECTION */
+        .hero { padding: 80px 0; text-align: center; }
+        .tag { background: rgba(59, 130, 246, 0.2); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px; }
+        h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.2rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px auto; }
+        
+        /* BOTÕES DE AÇÃO */
+        .cta-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 15px 30px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: 0.3s; }
+        
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
+        
+        .btn-outline { border: 2px solid var(--gray); color: var(--text); }
+        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
+
+        /* MOCKUP (Visual da Ferramenta) */
+        .mockup-container { margin-top: 50px; position: relative; }
+        .mockup { width: 100%; max-width: 800px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        
+        /* BENEFÍCIOS */
+        .benefits { padding: 80px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: var(--card); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .card i { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 10px; }
+        .card p { color: var(--gray); font-size: 0.9rem; }
+
+        /* PREÇO E CTA FINAL */
+        .offer { background: linear-gradient(180deg, var(--card) 0%, var(--bg) 100%); padding: 80px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        .price { font-size: 3.5rem; font-weight: 900; margin: 20px 0; }
+        .price span { font-size: 1rem; color: var(--gray); font-weight: 400; }
+        
+        .btn-whatsapp { background: var(--accent); color: white; width: 100%; max-width: 350px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.1rem; }
+        .btn-whatsapp:hover { background: #1ebc57; }
+
+        /* RESPONSIVO */
+        @media(max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .cta-group { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">PIXEL<span>STUDIO</span></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="tag">Exclusivo para Lojas de Pisos</span>
+            <h1>Pare de perder tempo fazendo orçamento para curioso.</h1>
+            <p>Transforme seu site em um vendedor 24h. O cliente calcula, vê o preço estimado e agenda a visita técnica sozinho no seu WhatsApp.</p>
+            
+            <div class="cta-group">
+                <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20vi%20o%20sistema%20de%20pisos%20e%20quero%20saber%20mais." class="btn btn-primary">
+                    QUERO AUTOMATIZAR MINHA LOJA
+                </a>
+                <a href="https://ashleymasterbr.github.io/Wireflame-M-quina-de-Or-amentos-Pisos/" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-eye"></i> Ver Modelo Funcionando
+                </a>
+            </div>
+
+            <div class="mockup-container">
+                <img src="https://placehold.co/800x450/1e293b/FFF?text=Preview+do+Sistema+no+Celular" alt="Preview do Sistema" class="mockup">
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Por que você precisa disso hoje?</h2>
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-filter"></i>
+                    <h3>Filtro de Curiosos</h3>
+                    <p>O sistema mostra o preço estimado. Quem não tem dinheiro nem te chama. Quem te chama, quer comprar.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Agilidade no Zap</h3>
+                    <p>O lead já chega com Nome, Metragem e Tipo de Piso. Você só agenda a visita pra fechar.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-code"></i>
+                    <h3>Instalação Rápida</h3>
+                    <p>Não precisa refazer seu site. Nós instalamos a ferramenta com sua logo e seus preços em 24h.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer">
+        <div class="container">
+            <h3>Oferta de Lançamento</h3>
+            <p>Tenha o sistema definitivo de vendas de pisos.</p>
+            
+            <div class="price">R$ 997 <span style="display:block; font-size:1.2rem;">(Taxa Única de Setup)</span></div>
+            <p style="margin-bottom: 30px; color: var(--gray);">+ Manutenção Mensal de R$ 149,00</p>
+
+            <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1%2C%20quero%20contratar%20o%20sistema%20de%20pisos%20agora." class="btn btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> CONTRATAR AGORA
+            </a>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: var(--gray);">Parcelamos o setup no cartão de crédito.</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 20px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; color: var(--gray);">
+        &copy; 2025 Pixel Studio. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
